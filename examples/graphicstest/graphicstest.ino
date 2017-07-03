@@ -25,7 +25,7 @@ void setup() {
 void loop(void) {
   tft.invertDisplay(inversion) ;
   tft.setRotation(0) ;
-//   benchmarks() ;
+  benchmarks() ;
   for(uint8_t rotation=0; rotation<4; rotation++) {
     tft.setRotation(rotation);
     testText();

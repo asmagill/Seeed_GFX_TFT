@@ -1,0 +1,48 @@
+################################################################
+# Syntax Coloring Map
+################################################################
+# Class
+################################################################
+
+Seeed_GFX_TFT	KEYWORD1
+
+################################################################
+# Methods and Functions
+################################################################
+
+begin	KEYWORD2
+drawPixel	KEYWORD2
+invertDisplay	KEYWORD2
+drawFastVLine	KEYWORD2
+drawFastHLine	KEYWORD2
+fillScreen	KEYWORD2
+color565	KEYWORD2
+
+################################################################
+# Constants
+################################################################
+
+ST7781R_TFTWIDTH	LITERAL1
+ST7781R_TFTHEIGHT	LITERAL1
+ST7781R_BRIGHT_RED	LITERAL1
+ST7781R_GRAY1	LITERAL1
+ST7781R_GRAY2	LITERAL1
+ST7781R_BLACK	LITERAL1
+ST7781R_NAVY	LITERAL1
+ST7781R_DARKGREEN	LITERAL1
+ST7781R_DARKCYAN	LITERAL1
+ST7781R_MAROON	LITERAL1
+ST7781R_PURPLE	LITERAL1
+ST7781R_OLIVE	LITERAL1
+ST7781R_LIGHTGREY	LITERAL1
+ST7781R_DARKGREY	LITERAL1
+ST7781R_BLUE	LITERAL1
+ST7781R_GREEN	LITERAL1
+ST7781R_CYAN	LITERAL1
+ST7781R_RED	LITERAL1
+ST7781R_MAGENTA	LITERAL1
+ST7781R_YELLOW	LITERAL1
+ST7781R_WHITE	LITERAL1
+ST7781R_ORANGE	LITERAL1
+ST7781R_GREENYELLOW	LITERAL1
+ST7781R_PINK	LITERAL1
