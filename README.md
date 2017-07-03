@@ -15,12 +15,12 @@ Portions based on code from [TFT_Touch_Shield_V1](https://github.com/Seeed-Studi
 
 ### Known Issues
 
-* I'm not completely happy with the code handling rotation, especially in the `drawFastVLine` and `drawFastVLine` functions -- text  on subsequent lines may apear to bleed into the previous line.  I suspect this has to do with the pixel size of the display and scanning direction set by the `0x03` opcode; however changing this also changes the apparent origin of the display in ways I haven't deciphered yet.  This may be addressed in the future, or it may not -- the library meets my needs at present.
+* I'm not completely happy with the code handling rotation, especially in the `drawFastVLine` and `drawFastHLine` functions -- text  on subsequent lines may apear to bleed into the previous line.  I suspect this has to do with the pixel size of the display and scanning direction set by the `0x03` opcode; however changing this also changes the apparent origin of the display in ways I haven't deciphered yet.  This may be addressed in the future, or it may not -- the library meets my needs at present.
 
 ### References
 * [Adafruit-GFX-Library](https://github.com/adafruit/Adafruit-GFX-Library)
 * [TFT_Touch_Shield_V1](https://github.com/Seeed-Studio/TFT_Touch_Shield_V1)
-* [ST7781R datasheet](http://wiki.seeedstudio.com/images/4/4e/ST7781R_datasheet.pdf)
+* [ST7781R datasheet (pdf)](http://wiki.seeedstudio.com/images/4/4e/ST7781R_datasheet.pdf)
 
 ### License
 
