@@ -1,9 +1,9 @@
 Seeed_GFX_TFT
 =============
 
-This library enables the 2.8" TFT Touch Shield V1.0 to be used with [Adafruit-GFX-Library](https://github.com/adafruit/Adafruit-GFX-Library).
+This library allows the _Seeed TFT Touch Shield V1.0_ to be used with [Adafruit-GFX-Library](https://github.com/adafruit/Adafruit-GFX-Library).
 
-If you have the Seeed TFT Touch Shield V2.x, see [Adafruit_ILI9341](https://github.com/adafruit/Adafruit_ILI9341).  I've had success using this library with the constructor `Adafruit_ILI9341(/* TFT_CS */ 5, /* TFT_DC */ 6)`.
+If you have the _Seeed TFT Touch Shield V2.x_, see [Adafruit_ILI9341](https://github.com/adafruit/Adafruit_ILI9341).  I've had success using this library with the constructor `Adafruit_ILI9341(/* TFT_CS */ 5, /* TFT_DC */ 6)`.
 
 ### Notes
 
