@@ -5,7 +5,6 @@ Modified Graphics test from the Adafruit_ILI9341 library
  ****************************************************/
 
 
-#include "SPI.h"
 #include "Adafruit_GFX.h"
 #include "Seeed_GFX_TFT.h"
 
@@ -14,7 +13,7 @@ Seeed_GFX_TFT tft = Seeed_GFX_TFT() ;
 boolean inversion = false ;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("ST7781R Test!");
 
   tft.begin();

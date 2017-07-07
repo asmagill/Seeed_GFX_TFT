@@ -128,7 +128,7 @@ class Seeed_GFX_TFT : public Adafruit_GFX {
         // These MAY be overridden by the subclass to provide device-specific
         // optimized code.  Otherwise 'generic' versions are used.
         // void      setRotation(uint8_t r) ;
-        void      invertDisplay(boolean i) ;
+        void      invertDisplay(bool i) ;
 
         // BASIC DRAW API
         // These MAY be overridden by the subclass to provide device-specific
@@ -143,6 +143,9 @@ class Seeed_GFX_TFT : public Adafruit_GFX {
         // void      drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color) ;
         // void      drawRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color) ;
 
+        // Other additions
+
+        // From Adafruit_ILI9341 -- the example file uses it and it seems useful
         uint16_t  color565(uint8_t r, uint8_t g, uint8_t b) ;
 
     private:

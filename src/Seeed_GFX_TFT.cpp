@@ -66,7 +66,7 @@ void Seeed_GFX_TFT::fillScreen(uint16_t color) {
     }
 }
 
-void Seeed_GFX_TFT::invertDisplay(boolean i) {
+void Seeed_GFX_TFT::invertDisplay(bool i) {
     sendCommand(0x61) ; sendData(i ? 0x0000 : 0x0001) ;
 }
 
