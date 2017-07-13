@@ -73,47 +73,6 @@ void Seeed_GFX_TFT::invertDisplay(bool i) {
 void Seeed_GFX_TFT::drawPixel(int16_t x, int16_t y, uint16_t color) {
     if((x < 0) || (y < 0) || (x >= _width) || (y >= _height)) return ;
 
-    setXY(x, y) ;
-    sendData(color) ;
-}
-
-void Seeed_GFX_TFT::drawFastHLine(int16_t x, int16_t y, int16_t length, uint16_t color) {
-    if ((y < 0) || (y >= _height)) return ; // it's off screen
-    if (length < 0) {                       // if length is negative, make it positive and move end point (i.e. reverse)
-        length *= -1 ;
-        x = x - length ;
-    }
-    if (x >= _width) return ;               // it's off screen
-    if (x < 0) length = length + x ;        // if x is negative, remove it from length (it's off screen)
-    x = constrain(x, 0, _width  - 1) ;
-    setXY(x, y) ;
-    sendCommand(0x03) ; sendData((rotation % 2) ? 0x1038 : 0x1030) ; sendCommand(0x22) ;
-    if (length + x > (_width - 1)) length = (_width - 1) - x;
-    for (int16_t i = 0 ; i < length ; i++) sendData(color) ;
-}
-
-void Seeed_GFX_TFT::drawFastVLine(int16_t x, int16_t y, int16_t length, uint16_t color) {
-    if ((x < 0) || (x >= _width)) return ; // it's off screen
-    if (length < 0) {                      // if length is negative, make it positive and move end point (i.e. reverse)
-        length *= -1 ;
-        y = y - length ;
-    }
-    if (y >= _height) return ;             // it's off screen
-    if (y < 0) length = length + y ;       // if y is negative, remove it from length (it's off screen)
-    y = constrain(y, 0, _height - 1) ;
-    setXY(x, y) ;
-    sendCommand(0x03) ; sendData((rotation % 2) ? 0x1030 : 0x1038) ; sendCommand(0x22) ;
-    if (length + y > (_height - 1)) length = (_height - 1) - y ;
-    for (int16_t i = 0 ; i < length ; i++) sendData(color) ;
-}
-
-uint16_t Seeed_GFX_TFT::color565(uint8_t r, uint8_t g, uint8_t b) {
-    return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | ((b & 0xF8) >> 3);
-}
-
-#pragma mark - Private Methods
-
-void Seeed_GFX_TFT::setXY(int16_t x, int16_t y) {
     int16_t t ;
     switch(rotation) {
         case 1:
@@ -132,6 +91,85 @@ void Seeed_GFX_TFT::setXY(int16_t x, int16_t y) {
             break;
     }
 
+    setXY(x, y) ;
+    sendData(color) ;
+}
+
+void Seeed_GFX_TFT::drawFastHLine(int16_t x, int16_t y, int16_t length, uint16_t color) {
+    if ((y < 0) || (y >= _height)) return ; // it's off screen
+    if (length < 0) {                       // if length is negative, make it positive and move end point (i.e. reverse)
+        length *= -1 ;
+        x = x - length ;
+    }
+    if (x >= _width) return ;               // it's off screen
+    if (x < 0) length = length + x ;        // if x is negative, remove it from length (it's off screen)
+    x = constrain(x, 0, _width  - 1) ;
+
+    int16_t t ;
+    switch(rotation) {
+        case 1:
+            t = x ;
+            x = WIDTH - 1 - y ;
+            y = t ;
+            break ;
+        case 2:
+            x = WIDTH  - 1 - x - length ;
+            y = HEIGHT - 1 - y ;
+            break;
+        case 3:
+            t = x ;
+            x = y - length ;
+            y = HEIGHT - 1 - t ;
+            break;
+    }
+
+    setXY(x, y) ;
+    sendCommand(0x03) ; sendData((rotation % 2) ? 0x1038 : 0x1030) ; sendCommand(0x22) ;
+    if (length + x > (_width - 1)) length = (_width - 1) - x;
+    for (int16_t i = 0 ; i < length ; i++) sendData(color) ;
+}
+
+void Seeed_GFX_TFT::drawFastVLine(int16_t x, int16_t y, int16_t length, uint16_t color) {
+    if ((x < 0) || (x >= _width)) return ; // it's off screen
+    if (length < 0) {                      // if length is negative, make it positive and move end point (i.e. reverse)
+        length *= -1 ;
+        y = y - length ;
+    }
+    if (y >= _height) return ;             // it's off screen
+    if (y < 0) length = length + y ;       // if y is negative, remove it from length (it's off screen)
+    y = constrain(y, 0, _height - 1) ;
+
+    int16_t t ;
+    switch(rotation) {
+        case 1:
+            t = x ;
+            x = WIDTH - 1 - y ;
+            y = t ;
+            break ;
+        case 2:
+            x = WIDTH  - 1 - x ;
+            y = HEIGHT - 1 - y - length ;
+            break;
+        case 3:
+            t = x ;
+            x = y ;
+            y = HEIGHT - 1 - t - length ;
+            break;
+    }
+
+    setXY(x, y) ;
+    sendCommand(0x03) ; sendData((rotation % 2) ? 0x1030 : 0x1038) ; sendCommand(0x22) ;
+    if (length + y > (_height - 1)) length = (_height - 1) - y ;
+    for (int16_t i = 0 ; i < length ; i++) sendData(color) ;
+}
+
+uint16_t Seeed_GFX_TFT::color565(uint8_t r, uint8_t g, uint8_t b) {
+    return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | ((b & 0xF8) >> 3);
+}
+
+#pragma mark - Private Methods
+
+void Seeed_GFX_TFT::setXY(int16_t x, int16_t y) {
     sendCommand(0x20) ; //X // Horizontal DRAM Address Set
     sendData((uint16_t)x) ;
     sendCommand(0x21) ; //Y // Vertical DRAM Address Set
