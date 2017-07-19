@@ -13,9 +13,13 @@ This library has been tested with the Arduino UNO and DFRobot's Bluno. Due to he
 
 Portions based on code from [TFT_Touch_Shield_V1](https://github.com/Seeed-Studio/TFT_Touch_Shield_V1).
 
-### Known Issues
+### Known Issues / Limitations
 
-* I'm not completely happy with the code handling rotation, especially in the `drawFastVLine` and `drawFastHLine` functions -- text  on subsequent lines may apear to bleed into the previous line.  I suspect this has to do with the pixel size of the display and scanning direction set by the `0x03` opcode; however changing this also changes the apparent origin of the display in ways I haven't deciphered yet.  This may be addressed in the future, or it may not -- the library meets my needs at present.
+* Lanscape orientations (`setRotation(1)` and `setRotation(3)` have not been tested with the new rotation code.
+* Filling rectangles is slow; may be able to speed up some with a better understanding of the ST7781R opcodes then I have at present.
+* No way to turn off the backlight; I suspect this may be a limitation of the hardware as initial testing of the sleep and suspend modes only clears the display.
+* Have not tested bitmap images; given that this particular shield does not leave enough available pins for adding an SD Card shield, this may be moot due to memory limitations.
+* May add support for Leonardo and/or Arduino 101
 
 ### References
 * [Adafruit-GFX-Library](https://github.com/adafruit/Adafruit-GFX-Library)
