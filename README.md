@@ -15,7 +15,7 @@ Portions based on code from [TFT_Touch_Shield_V1](https://github.com/Seeed-Studi
 
 ### Known Issues / Limitations
 
-* Lanscape orientations (`setRotation(1)` and `setRotation(3)` have not been tested with the new rotation code.
+* Rotation works, though rotated lines can appear one pixel too long in some cases -- not sure if this is due to math error or drawing direction versus rotation.
 * Filling rectangles is slow; may be able to speed up some with a better understanding of the ST7781R opcodes then I have at present.
 * No way to turn off the backlight; I suspect this may be a limitation of the hardware as initial testing of the sleep and suspend modes only clears the display.
 * Have not tested bitmap images; given that this particular shield does not leave enough available pins for adding an SD Card shield, this may be moot due to memory limitations.

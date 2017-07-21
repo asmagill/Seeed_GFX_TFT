@@ -156,6 +156,8 @@ class Seeed_GFX_TFT : public Adafruit_GFX {
         void  all_pin_output(void) ;
         void  all_pin_low(void) ;
         void  setXY(int16_t poX, int16_t poY) ;
+        void  reallyDrawHorizontalLine(int16_t x, int16_t y, int16_t length, uint16_t color) ;
+        void  reallyDrawVerticalLine(int16_t x, int16_t y, int16_t length, uint16_t color) ;
 
 } ;
 
