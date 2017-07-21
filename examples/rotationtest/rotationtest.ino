@@ -27,14 +27,14 @@ void loop() {
     tft.setTextSize(1) ;
     tft.print("est") ;
 
-    int16_t H = tft.height() ;
-    int16_t W = tft.width() ;
+    int16_t H = tft.height() - 1 ;
+    int16_t W = tft.width()  - 1 ;
 
     tft.fillRoundRect(25, 25, W - 50, H - 50, 15, ST7781R_LIGHTGREY) ;
 
-    for(int16_t i = 35 ; i <= W - 35 ; i = i + 10) {
+    for(int16_t i = 35 ; i <= (W + 1) - 35 ; i = i + 10) {
         tft.drawLine(i, 35, i, H - 35, ST7781R_BLUE) ;
-        for(int16_t j = 35 ; j <= H - 35 ; j = j + 10) {
+        for(int16_t j = 35 ; j <= (H + 1) - 35 ; j = j + 10) {
             tft.drawLine(35, j, W - 35, j, ST7781R_BLUE) ;
         }
     }
